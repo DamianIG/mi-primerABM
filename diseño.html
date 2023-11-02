@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="es">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Diseño ABM</title>
+        <link rel="stylesheet" type="text/css" href="style.css">
+    </head>
+    <body>
+        <center>
+            <form name="Mantenimiento" action="mantenimiento.php" method="post">
+            <table border="1">
+                <tr>
+                    <td colspan="4"><label>Mantenimiento de Clientes</label></td>
+                </tr>
+                <tr>
+                    <td colspan="4"><label>Registrar Cliente </label></td>
+                </tr>
+                <tr>
+	                <td><label>Codigo</label></td><td><input type="text" value="" maxlength="7" name="txtcodigo"></td>
+	                <td><label>Edad</label></td><td><input type="text" value="" maxlength="2" name="txtedad" maxlength="2" size="10"></td>
+                </tr>
+                <tr>
+	                <td><label>Nombre</label></td><td><input type="text" value="" maxlength="50" name="txtnombre"></td>
+	                <td><label>Telefono</label></td><td><input type="text" value="" maxlength="9" size="10" name="txttelefono"></td>
+                </tr>
+                <tr>
+                    <td colspan="4" align="center">
+                        <input type="submit" value="Nuevo" name="limpiardatos" >
+                        <input type="submit" value="Grabar" name="grabardatos" >
+                        <input type="submit" value="Modificar" name="modificardatos" >
+                        <input type="submit" value="Eliminar" name="eliminardatos">
+                    </td>
+                </tr>
+                <tr>
+                    <td colspan="4"><label>Listado de Clientes </label></td>
+                </tr>
+                <tr>
+                    <td><label>Codigo</label></td>
+	                <td><label>Nombre</label></td>
+	                <td><label>Edad</label></td>
+	                <td><label>Telefono</label></td>
+                </tr>
+
+                <?php 
+                     $sql="SELECT * FROM clientes";
+                    $result=mysqli_query($conn,$sql);
+
+                    while($mostrar=mysqli_fetch_array($result))
+                {
+                ?>
+
+                <tr>
+                    <td><?php echo $mostrar['codigo'] ?>
+	                <td><?php echo $mostrar['nombre'] ?>
+	                <td><?php echo $mostrar['edad'] ?>
+	                <td><?php echo $mostrar['telefono'] ?>
+                </tr>
+                <?php
+                }
+                ?>
+
+            </table>
+            </form>
+            </center>
+
+    </body>
+</html>
